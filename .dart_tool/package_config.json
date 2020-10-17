@@ -116,6 +116,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "flutter_auth_buttons",
+      "rootUri": "file:///C:/Users/pirris/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_auth_buttons-0.10.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/Users/pirris/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -266,7 +272,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-10-17T16:05:18.152428Z",
+  "generated": "2020-10-17T16:58:47.363472Z",
   "generator": "pub",
   "generatorVersion": "2.10.2"
 }

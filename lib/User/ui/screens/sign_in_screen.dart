@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:my_trips_flutter_app/widgets/button_gmail.dart';
 import 'package:my_trips_flutter_app/widgets/button_green.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
 
@@ -46,6 +47,10 @@ class _SignInScreen extends State<SignInScreen>{
               width: 300.0,
               height: 50.0,
               ),
+
+              ButtonGmail(onPressed: (){
+
+              }),
             ],
           )
         ],
