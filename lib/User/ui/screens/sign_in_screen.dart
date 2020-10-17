@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:my_trips_flutter_app/widgets/button_green.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
 
 class SignInScreen extends StatefulWidget{
@@ -38,7 +39,13 @@ class _SignInScreen extends State<SignInScreen>{
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
-              )
+              ),
+              ButtonGreen(text: "Login with Gmail", onPressed: (){
+
+              },
+              width: 300.0,
+              height: 50.0,
+              ),
             ],
           )
         ],
