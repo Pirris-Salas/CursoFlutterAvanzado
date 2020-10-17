@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'file:///C:/Users/pirris/AndroidStudioProjects/FlutterAvanzado/LearningFlutter/lib/Place/ui/screens/home_trips.dart';
-import 'file:///C:/Users/pirris/AndroidStudioProjects/FlutterAvanzado/LearningFlutter/lib/User/ui/screens/profile_trips.dart';
-import 'file:///C:/Users/pirris/AndroidStudioProjects/FlutterAvanzado/LearningFlutter/lib/Place/ui/screens/search_trips.dart';
-
+import 'package:my_trips_flutter_app/Place/ui/screens/home_trips.dart';
+import 'User/ui/screens/profile_trips.dart';
+import 'package:my_trips_flutter_app/Place/ui/screens/search_trips.dart';
 class PlatziTripsCupertino extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

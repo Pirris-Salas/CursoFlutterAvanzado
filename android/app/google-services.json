@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "107549997377",
+    "firebase_url": "https://flutteravanzado-32eb8.firebaseio.com",
+    "project_id": "flutteravanzado-32eb8",
+    "storage_bucket": "flutteravanzado-32eb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107549997377:android:e444fc9ee349a38aca49c0",
+        "android_client_info": {
+          "package_name": "pirrissalas.my_trips_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107549997377-vp0s5grc2hk6hlusgemk3hd2a83utvf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pirrissalas.my_trips_flutter_app",
+            "certificate_hash": "95f72c4cfdf2f965bed5d323f064785867e7eb10"
+          }
+        },
+        {
+          "client_id": "107549997377-3klqoouvkjtv8higkomedcuavccjdsh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEhIRFa1GW5ycPVSDMybZmtcCaX8Wi8vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107549997377-3klqoouvkjtv8higkomedcuavccjdsh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

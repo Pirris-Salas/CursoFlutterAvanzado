@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/pirris/AndroidStudioProjects/FlutterAvanzado/LearningFlutter/lib/Place/ui/widgets/review_list.dart';
+import 'package:my_trips_flutter_app/Place/ui/widgets/review_list.dart';
 import '../widgets/description_place.dart';
 import 'header_appbar.dart';
 
