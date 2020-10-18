@@ -6,8 +6,11 @@ import 'package:my_trips_flutter_app/platzi_trips.dart';
 import 'package:my_trips_flutter_app/widgets/button_gmail.dart';
 import 'package:my_trips_flutter_app/widgets/button_green.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
+import 'package:my_trips_flutter_app/widgets/loading_widget.dart';
 
 class SignInScreen extends StatefulWidget{
+
+  String name;
   
   @override
   State<StatefulWidget> createState() {
@@ -29,23 +32,6 @@ class _SignInScreen extends State<SignInScreen>{
     return _handleCurrentSession();
   }
 
-  Widget _handleCurrentSession(){
-
-    return StreamBuilder(
-      stream: userBloc.authStatus,
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        //snapshot - data - Object User
-        if(!snapshot.hasData || snapshot.hasError){
-          return signInGoogleUI();
-        }else{
-          return PlatziTrips();
-        }
-      },
-    );
-  }
-
-
-  
   Widget signInGoogleUI(){
     return Scaffold(
       body: Stack(
@@ -56,22 +42,22 @@ class _SignInScreen extends State<SignInScreen>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Welcome\n This is your Travel App",
-              style: TextStyle(
-                fontSize: 37.0,
-                fontFamily: 'Lato',
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+                style: TextStyle(
+                  fontSize: 37.0,
+                  fontFamily: 'Lato',
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               ButtonGreen(text: "Login with Gmail", onPressed: (){
 
               },
-              width: 300.0,
-              height: 50.0,
+                width: 300.0,
+                height: 50.0,
               ),
 
               ButtonGmail(onPressed: (){
-                userBloc.signIn().then((FirebaseUser value) => print("Bienvenido: ${value.displayName}"));
+                userBloc.signIn().then((FirebaseUser value) => widget.name =value.displayName);
               }),
             ],
           )
@@ -79,5 +65,29 @@ class _SignInScreen extends State<SignInScreen>{
       ),
     );
   }
+
+
+  Widget _handleCurrentSession(){
+
+    return StreamBuilder(
+      stream: userBloc.authStatus,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        //snapshot - data - Object User
+        if(snapshot.hasData){
+          return PlatziTrips();
+        }else if(snapshot.hasError){
+          return Text("Ocurrió un error en la transmisión de datos");
+        }else if(snapshot.connectionState != ConnectionState.waiting){
+          return signInGoogleUI();
+        }else{
+         return LoadingWidget();
+        }
+      },
+    );
+  }
+
+
+  
+
   
 }
