@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:my_trips_flutter_app/User/bloc/bloc_user.dart';
+import 'package:my_trips_flutter_app/User/model/user.dart';
 import 'package:my_trips_flutter_app/platzi_trips.dart';
 import 'package:my_trips_flutter_app/widgets/button_gmail.dart';
 import 'package:my_trips_flutter_app/widgets/button_green.dart';
@@ -23,7 +23,7 @@ class SignInScreen extends StatefulWidget{
 class _SignInScreen extends State<SignInScreen>{
 
   BlocUser userBloc;
-  
+  User user;
   @override
   Widget build(BuildContext context) {
 
@@ -57,7 +57,8 @@ class _SignInScreen extends State<SignInScreen>{
               ),
 
               ButtonGmail(onPressed: (){
-                userBloc.signIn().then((FirebaseUser value) => widget.name =value.displayName);
+                userBloc.signOut();
+                userBloc.signIn();
               }),
             ],
           )

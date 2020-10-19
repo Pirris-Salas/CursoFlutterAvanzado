@@ -36,7 +36,7 @@ class _LoadingWidget extends State<LoadingWidget>{
               top: 10.0,
             ),
             child: Text(
-              "C a r g a n d o",
+              "L o a d i n g",
               style: TextStyle(
                 color: Colors.blue[400],
                 fontSize: 22.0,
