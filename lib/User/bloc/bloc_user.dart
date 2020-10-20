@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:my_trips_flutter_app/User/model/user.dart';
 import 'package:my_trips_flutter_app/User/repository/auth_repository.dart';
+import 'package:my_trips_flutter_app/User/repository/cloud_firestore_repository.dart';
 
 class BlocUser implements Bloc{
 
@@ -20,6 +22,12 @@ class BlocUser implements Bloc{
   Future<FirebaseUser> signIn(){
     return _auth_repository.signInFirebase();
   }
+
+  //2do Caso de Uso
+  //Registrar Usuario en Base de Datos
+  final _cloudFirestoreRepository = CloudFirestoreRepository();
+  void updateUserData(User user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
+
 
   signOut() {
     _auth_repository.signOut();

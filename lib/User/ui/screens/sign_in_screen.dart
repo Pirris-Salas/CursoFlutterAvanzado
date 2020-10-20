@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:my_trips_flutter_app/User/bloc/bloc_user.dart';
@@ -58,7 +59,14 @@ class _SignInScreen extends State<SignInScreen>{
 
               ButtonGmail(onPressed: (){
                 userBloc.signOut();
-                userBloc.signIn();
+                userBloc.signIn().then((FirebaseUser user){
+                  userBloc.updateUserData(User(
+                    uid: user.uid,
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoUrl
+                  ));
+                });
               }),
             ],
           )

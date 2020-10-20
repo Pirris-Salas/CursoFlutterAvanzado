@@ -19,7 +19,7 @@ class FirebaseAuthAPI {
 
       AuthResult result = await _auth.signInWithCredential(credential);
 
-      FirebaseUser user = (result) as FirebaseUser;
+      FirebaseUser user = (await result).user;
       return user;
 
     }
