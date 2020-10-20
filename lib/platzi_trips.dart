@@ -29,7 +29,7 @@ class _PlatziTrips extends State<PlatziTrips> {
     SearchTrips(),
 
     //Bloc Profile Trips
-    BlocProvider(
+    BlocProvider<BlocUser>(
         child: ProfileTrips(),
         bloc: BlocUser(),
     ),
