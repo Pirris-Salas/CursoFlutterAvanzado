@@ -12,6 +12,7 @@ import 'package:my_trips_flutter_app/widgets/loading_widget.dart';
 class SignInScreen extends StatefulWidget{
 
   String name;
+
   
   @override
   State<StatefulWidget> createState() {
@@ -25,11 +26,13 @@ class _SignInScreen extends State<SignInScreen>{
 
   BlocUser userBloc;
   User user;
+  double screenWidth;
+
   @override
   Widget build(BuildContext context) {
 
     userBloc = BlocProvider.of(context);
-    
+    screenWidth = MediaQuery.of(context).size.width;
     return _handleCurrentSession();
   }
 
@@ -42,14 +45,20 @@ class _SignInScreen extends State<SignInScreen>{
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Welcome\n This is your Travel App",
-                style: TextStyle(
-                  fontSize: 37.0,
-                  fontFamily: 'Lato',
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              Flexible(
+                  child: Container(
+                    width: screenWidth,
+                    child: Text("Welcome\n This is your Travel App",
+                      style: TextStyle(
+                        fontSize: 37.0,
+                        fontFamily: 'Lato',
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
               ),
+
               ButtonGreen(text: "Login with Gmail", onPressed: (){
 
               },
