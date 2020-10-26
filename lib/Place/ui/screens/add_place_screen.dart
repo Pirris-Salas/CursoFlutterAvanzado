@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trips_flutter_app/widgets/button_back.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
+import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
 import 'package:my_trips_flutter_app/widgets/widget_title_header.dart';
 
 class AddPlaceScreen extends StatefulWidget{
@@ -12,9 +13,10 @@ class AddPlaceScreen extends StatefulWidget{
 
   AddPlaceScreen ({Key key, this.image});
 
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+
     return _AddPlaceScreen();
   }
 
@@ -25,14 +27,18 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
   @override
   Widget build(BuildContext context) {
 
+   final _controllerTitlePlace = TextEditingController();
+   final _controllerDescriptionPlace = TextEditingController();
+
     double screenWidth = MediaQuery.of(context).size.width;
+
 
     return Scaffold(
 
       body: Stack(
         children: [
           GradientBack(height: 300.0),
-          Row(
+          Row( //App Bar
             children: [
               Container(
                 padding: EdgeInsets.only(
@@ -54,6 +60,35 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
               )
             ],
           ),
+
+          Container( //Safe Area - CardView
+            margin: EdgeInsets.only(
+              top: 120.0,
+              bottom: 20.0,
+            ),
+            child: ListView(
+              children: [
+                Container(), //Foto
+                Container( //TextField Title
+                  margin: EdgeInsets.only(
+                    bottom: 20.0,
+                  ),
+                  child: WidgetTextField(
+                      hintText: "Title",
+                      inputType: null,
+                      maxLines: 1,
+                      controller: _controllerTitlePlace),
+                ),
+                WidgetTextField(
+                    hintText: "Description",
+                    inputType: TextInputType.multiline,
+                    maxLines: 4,
+                    controller: _controllerDescriptionPlace,
+                ),
+              ],
+            ),
+          ),
+
         ],
       ),
     );
