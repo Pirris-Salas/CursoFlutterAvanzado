@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_trips_flutter_app/Place/ui/widgets/widget_textfield_location.dart';
 import 'package:my_trips_flutter_app/widgets/button_back.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
 import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
@@ -29,6 +30,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
 
    final _controllerTitlePlace = TextEditingController();
    final _controllerDescriptionPlace = TextEditingController();
+   final _controllerLocationPlace =  TextEditingController();
 
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -84,6 +86,16 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
                     inputType: TextInputType.multiline,
                     maxLines: 4,
                     controller: _controllerDescriptionPlace,
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: WidgetTextFieldLocation(
+                    hintText: "Add location",
+                    iconData: Icons.add_location_alt_outlined,
+                    controller: _controllerLocationPlace,
+                  ),
                 ),
               ],
             ),
