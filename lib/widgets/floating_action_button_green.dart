@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
 
-class FloatingActionButtonGreen extends StatefulWidget{
+class FloatingActionButtonGreen extends StatefulWidget {
 
-  @override
-  State<StatefulWidget> createState() {
-    return _FloatingActionButtonGreen();
-  }
+  final IconData iconWithBorder;
+  final IconData iconFilled;
+  final VoidCallback onPressed;
+
+  FloatingActionButtonGreen({
+    Key key,
+    @required this.iconWithBorder,
+    @required this.iconFilled,
+    @required this.onPressed,
+});
+
+@override
+State<StatefulWidget> createState() {
+  return _FloatingActionButtonGreen();
+}
 
 }
 
-class _FloatingActionButtonGreen extends State <FloatingActionButtonGreen> with AutomaticKeepAliveClientMixin{
+class _FloatingActionButtonGreen extends State <FloatingActionButtonGreen>
+    with AutomaticKeepAliveClientMixin {
 
   bool icon;
-  void onPressedFav(){
+
+  void onPressedFav() {
     setState(() {
       // ignore: unnecessary_statements
-     icon = !icon;
+      icon = !icon;
     });
   }
 
-  void initState(){
+  void initState() {
     super.initState();
     this.icon = false;
   }
@@ -30,23 +43,21 @@ class _FloatingActionButtonGreen extends State <FloatingActionButtonGreen> with 
 
   @override
   Widget build(BuildContext context) {
-   return FloatingActionButton(
-     backgroundColor: Color(0xFF11DA53),
-     mini: true,
-     tooltip: "Favorite",
-     onPressed: onPressedFav,
-     child: Icon(
-       icon ? Icons.favorite : Icons.favorite_border,
-       color: Colors.white,
-     ),
-     heroTag: null,
-   );
+    return FloatingActionButton(
+      backgroundColor: Color(0xFF11DA53),
+      mini: true,
+      tooltip: "Favorite",
+      onPressed: (){
+        widget.onPressed;
+        onPressedFav();
+      },
+      child: Icon(
+        icon ? widget.iconFilled: widget.iconWithBorder,
+        color: Colors.white,
+      ),
+      heroTag: null,
+    );
   }
-
-
-
-
-
 
 
 }
