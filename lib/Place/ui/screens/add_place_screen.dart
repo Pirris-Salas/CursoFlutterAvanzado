@@ -29,8 +29,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
 
     double screenWidth = MediaQuery.of(context).size.width;
 
-      String path = "assets/img/camara.jpg";
-
+    String path = "assets/img/camara.jpg";
 
     return Scaffold(
       body: Stack(
@@ -66,19 +65,21 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             ),
             child: ListView(
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                    bottom: 40.0
+                Flexible(
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(bottom: 40.0),
+                    width: screenWidth,
+                    child: CardImageWithFabIcon(
+                        pathImage:
+                            widget.image != null ? widget.image.path : path,
+                        height: 315.0,
+                        width: 390.0,
+                        left: 5.0,
+                        iconFilled: Icons.camera_alt,
+                        iconWithBorder: Icons.camera_alt_outlined,
+                        onPressed: null),
                   ),
-                  child: CardImageWithFabIcon(
-                      pathImage: widget.image != null ? widget.image.path : path,
-                      height: 315.0,
-                      width: 390.0,
-                      left: 5.0,
-                      iconFilled: Icons.camera_alt,
-                      iconWithBorder: Icons.camera_alt_outlined,
-                      onPressed: null),
                 ), //Foto
                 Container(
                   //TextField Title
