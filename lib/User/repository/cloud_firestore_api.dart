@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_trips_flutter_app/Place/model/place.dart';
 import 'package:my_trips_flutter_app/User/model/user.dart';
 
 class CloudFirestoreAPI {
@@ -6,13 +8,16 @@ class CloudFirestoreAPI {
   final String USERS = "users";
   final String PLACES = "places";
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
   final Firestore _db = Firestore.instance; //Declaramos la instancia
 
   //Actualiza la data acerca de la última sesión
   void updateUserData(User user) async {
     if (user != null) {
       DocumentReference ref = _db.collection(USERS).document(user.uid);
-      return ref.setData({
+      return await ref.setData({
         'uid': user.uid,
         'name': user.name,
         'email': user.email,
@@ -25,4 +30,17 @@ class CloudFirestoreAPI {
       print("No estamos atrapando datos");
     }
   }
+
+  Future<void> updatePlaceDate(Place place) async{
+    CollectionReference refPlaces = _db.collection(PLACES);
+    String uid = (await _auth.currentUser()).uid; //validamos si existe un usuario
+
+    await refPlaces.add({
+      'name': place.name,
+      'description': place.description,
+      'likes': place.likes,
+      'userOwner': "$USERS/$uid" //uid reference - vinculamos usuario
+    });
+  }
+
 }
