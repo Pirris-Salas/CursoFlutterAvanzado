@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 class ButtonPurple extends StatelessWidget{
   
-  String buttonText;
+  final String buttonText;
+  final VoidCallback onPressed;
   
-  ButtonPurple(this.buttonText);
+  ButtonPurple({
+    Key key,
+    @required this.buttonText,
+    @required this.onPressed
+  });
   
   @override
   Widget build(BuildContext context) {
@@ -20,13 +25,14 @@ class ButtonPurple extends StatelessWidget{
       child: InkWell(
         //FUNCIONALIDAD ON TAP, PARA EL BOTÓN
         //ACTIVA UN SNACKBAR CON UN TEXTO
-        onTap: () {
+        /*onTap: () {
           Scaffold.of(context).showSnackBar(
               SnackBar(
                   content: Text("Navigating")
               ),
           );
-        },
+        },*/
+        onTap: onPressed,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.0),

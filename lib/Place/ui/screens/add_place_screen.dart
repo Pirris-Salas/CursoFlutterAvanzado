@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:my_trips_flutter_app/Place/ui/widgets/card_image.dart';
 import 'package:my_trips_flutter_app/Place/ui/widgets/widget_textfield_location.dart';
 import 'package:my_trips_flutter_app/widgets/button_back.dart';
+import 'package:my_trips_flutter_app/widgets/button_purple.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
 import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
 import 'package:my_trips_flutter_app/widgets/widget_title_header.dart';
@@ -106,6 +107,21 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                     hintText: "Add location",
                     iconData: Icons.add_location_alt_outlined,
                     controller: _controllerLocationPlace,
+                  ),
+                ),
+                Container(
+                  width: 70.0,
+                  child: ButtonPurple(
+                    buttonText: "Add Place",
+                    onPressed: (){
+                      // Paso 1 - Preparar datos
+                      // Luego insertar datos al Cloud Firestore
+                      //Place - title, description, url, userOwner, like
+
+                      // Paso 2. Subir imagen al Firebase Storage
+                      // Devuelve url
+
+                    },
                   ),
                 ),
               ],
