@@ -110,6 +110,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "firebase_storage",
+      "rootUri": "file:///C:/Users/pirris/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-3.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/pirris/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -302,7 +308,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-10-31T17:34:25.623148Z",
+  "generated": "2020-10-31T21:58:44.822055Z",
   "generator": "pub",
   "generatorVersion": "2.10.2"
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -178,6 +179,14 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
 
                       // Paso 2. Subir imagen al Firebase Storage
                       // Devuelve url
+                      //ID del usuario loageado actualmente
+
+                      userBloc.currentUserID.then((FirebaseUser user) {
+                        if(user != null){
+
+                        }
+                      });
+
                     },
                   ),
                 ),

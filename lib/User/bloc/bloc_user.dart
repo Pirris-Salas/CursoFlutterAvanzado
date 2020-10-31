@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:my_trips_flutter_app/Place/model/place.dart';
+import 'package:my_trips_flutter_app/Place/repository/firebase_storage_repository.dart';
 import 'package:my_trips_flutter_app/User/model/user.dart';
 import 'package:my_trips_flutter_app/User/repository/auth_repository.dart';
 import 'package:my_trips_flutter_app/User/repository/cloud_firestore_repository.dart';
+import 'package:my_trips_flutter_app/User/repository/firebase_auth_api.dart';
 
 class BlocUser implements Bloc{
 
@@ -35,7 +40,14 @@ class BlocUser implements Bloc{
 
   Future<void> updateUserPlace(Place place) => _cloudFirestoreRepository.updateUserPlace(place);
 
+  //Caso 4
+  //Obtener el uid del usuario autenticado
+  Future<FirebaseUser> get currentUserID => FirebaseAuth.instance.currentUser();
 
+  //Caso 5
+  //Guadar la foto de un lugar en Firebase Storage
+  final firebaseStorageRepository = FirebaseStorageRepository();
+  Future<StorageUploadTask> uploadFile(String path, File image) => firebaseStorageRepository.uploadFile(path, image);
 
   //Caso para cerrar sesión
   signOut() {
