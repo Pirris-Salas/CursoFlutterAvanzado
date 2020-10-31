@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/floating_action_button_green.dart';
@@ -33,7 +35,8 @@ class CardImageWithFabIcon extends StatelessWidget {
       decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage(pathImage),
+            //image: AssetImage(pathImage),
+            image: pathImage.contains('assets') ? AssetImage(pathImage) : new FileImage(new File(pathImage)),
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           shape: BoxShape.rectangle,

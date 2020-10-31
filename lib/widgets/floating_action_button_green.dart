@@ -48,8 +48,8 @@ class _FloatingActionButtonGreen extends State <FloatingActionButtonGreen>
       mini: true,
       tooltip: "Favorite",
       onPressed: (){
-        widget.onPressed;
         onPressedFav();
+        widget.onPressed();
       },
       child: Icon(
         icon ? widget.iconFilled: widget.iconWithBorder,

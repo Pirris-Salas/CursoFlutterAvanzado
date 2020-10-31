@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:my_trips_flutter_app/Place/model/place.dart';
 import 'package:my_trips_flutter_app/Place/ui/widgets/card_image.dart';
 import 'package:my_trips_flutter_app/Place/ui/widgets/widget_textfield_location.dart';
@@ -13,8 +14,8 @@ import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
 import 'package:my_trips_flutter_app/widgets/widget_title_header.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  File image;
 
+  File image;
   AddPlaceScreen({Key key, this.image});
 
   @override
@@ -54,6 +55,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     String path = "assets/img/camara.jpg";
+
 
     return Scaffold(
       body: Stack(
@@ -102,7 +104,16 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                         left: 5.0,
                         iconFilled: Icons.camera_alt,
                         iconWithBorder: Icons.camera_alt_outlined,
-                        onPressed: null),
+                        onPressed: (){
+                          ImagePicker.pickImage(source: ImageSource.camera)
+                              .then((File image) {
+                                Navigator.pushReplacement(context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) => AddPlaceScreen(
+                                      image: image,
+                                    )));
+                          }).catchError((onError) => print(onError));
+                        }),
                   ),
                 ), //Foto
                 Container(
