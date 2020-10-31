@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:my_trips_flutter_app/Place/model/place.dart';
 import 'package:my_trips_flutter_app/User/model/user.dart';
 import 'package:my_trips_flutter_app/User/repository/auth_repository.dart';
 import 'package:my_trips_flutter_app/User/repository/cloud_firestore_repository.dart';
@@ -29,6 +30,14 @@ class BlocUser implements Bloc{
   void updateUserData(User user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
 
 
+  //Caso 3
+  //Agregar un nuevo lugar por parte del usuario
+
+  Future<void> updateUserPlace(Place place) => _cloudFirestoreRepository.updateUserPlace(place);
+
+
+
+  //Caso para cerrar sesión
   signOut() {
     _auth_repository.signOut();
   }
