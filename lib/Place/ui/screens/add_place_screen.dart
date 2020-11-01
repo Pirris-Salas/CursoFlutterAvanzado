@@ -12,7 +12,6 @@ import 'package:my_trips_flutter_app/User/bloc/bloc_user.dart';
 import 'package:my_trips_flutter_app/widgets/button_back.dart';
 import 'package:my_trips_flutter_app/widgets/button_purple.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
-import 'package:my_trips_flutter_app/widgets/loading_widget.dart';
 import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
 import 'package:my_trips_flutter_app/widgets/widget_title_header.dart';
 
