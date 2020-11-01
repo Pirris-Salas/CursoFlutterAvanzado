@@ -67,7 +67,10 @@ class BlocUser implements Bloc {
       _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
 
 
-
+  //Trayendo los objetos tipo Place de Firebase según el uid del usuario
+  //El uid lo pasamos a través del stream declarado en profile_places_list
+  Stream<QuerySnapshot> myPlacesListStream (String uid) => Firestore.instance.collection(CloudFirestoreAPI().PLACES)
+      .where("userOwner", isEqualTo: Firestore.instance.document("${CloudFirestoreAPI().USERS}/${uid}")).snapshots();
 
   //Caso para cerrar sesión
   signOut() {

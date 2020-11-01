@@ -10,29 +10,11 @@ class ProfileHeader extends StatelessWidget {
 
   BlocUser userBloc;
   User user;
+  ProfileHeader(@required this.user);
   
   @override
   Widget build(BuildContext context) {
 
-    userBloc = BlocProvider.of<BlocUser>(context);
-
-    return StreamBuilder(
-      stream: userBloc.streamFirebase,
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        switch(snapshot.connectionState){
-          case ConnectionState.waiting:
-            return CircularProgressIndicator();
-          case ConnectionState.none:
-            return CircularProgressIndicator();
-          case ConnectionState.active:
-            return showProfileData(snapshot);
-          case ConnectionState.done:
-            return showProfileData(snapshot);
-        }
-      },
-    );
-
-/*
     final title = Text(
       'Profile',
       style: TextStyle(
@@ -56,12 +38,12 @@ class ProfileHeader extends StatelessWidget {
               title
             ],
           ),
-          UserInfo('assets/img/profile.jpg', 'Luis Salas','luissalas_10@outlook.com'),
+          UserInfo(user),
           ButtonsBar()
         ],
       ),
     );
-    */
+
   }
 
   Widget showProfileData(AsyncSnapshot snapshot){
