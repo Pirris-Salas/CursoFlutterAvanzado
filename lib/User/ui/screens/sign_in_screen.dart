@@ -6,7 +6,6 @@ import 'package:my_trips_flutter_app/User/bloc/bloc_user.dart';
 import 'package:my_trips_flutter_app/User/model/user.dart';
 import 'package:my_trips_flutter_app/platzi_trips.dart';
 import 'package:my_trips_flutter_app/widgets/button_gmail.dart';
-import 'package:my_trips_flutter_app/widgets/button_green.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
 import 'package:my_trips_flutter_app/widgets/loading_widget.dart';
 

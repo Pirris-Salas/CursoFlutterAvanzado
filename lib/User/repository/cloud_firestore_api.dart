@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_trips_flutter_app/Place/model/place.dart';
 import 'package:my_trips_flutter_app/User/model/user.dart';
+import 'package:my_trips_flutter_app/User/ui/widgets/profile_place.dart';
 
 class CloudFirestoreAPI {
   //Constantes
@@ -50,6 +51,20 @@ class CloudFirestoreAPI {
         });
       });
     });
+  }
+
+  List<ProfilePlace> buildPlaces (List<DocumentSnapshot> placesListSnapshot){
+    
+    List<ProfilePlace> profilePlaces = List<ProfilePlace>();
+    placesListSnapshot.forEach((element) {
+      profilePlaces.add(ProfilePlace(
+        Place(
+          name: element.data['name'],
+          description: element.data['description'],
+          urlImage: element.data['urlImage'])
+      ));
+    });
+    return profilePlaces;
   }
 
 }
