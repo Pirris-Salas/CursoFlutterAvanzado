@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -11,6 +12,7 @@ import 'package:my_trips_flutter_app/User/bloc/bloc_user.dart';
 import 'package:my_trips_flutter_app/widgets/button_back.dart';
 import 'package:my_trips_flutter_app/widgets/button_purple.dart';
 import 'package:my_trips_flutter_app/widgets/gradient_back.dart';
+import 'package:my_trips_flutter_app/widgets/loading_widget.dart';
 import 'package:my_trips_flutter_app/widgets/widget_textfield.dart';
 import 'package:my_trips_flutter_app/widgets/widget_title_header.dart';
 
@@ -158,34 +160,48 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                       // Luego insertar datos al Cloud Firestore
                       //Place - title, description, url, userOwner, like
 
+                      // Paso 2. Subir imagen al Firebase Storage
+                      // Devuelve url
+                      //ID del usuario loageado actualmente
+
                       if (formKey.currentState.validate()) {
                         formKey.currentState.save();
 
-                        userBloc.updateUserPlace(Place(
-                          name: _controllerTitlePlace.text,
-                          description: _controllerDescriptionPlace.text,
-                          likes: 0,
-                        ))
-                            .whenComplete(() {
-                          print("Carga de datos Place completada");
-                          Navigator.pop(context);
+                        //Paso 2
+                        userBloc.currentUserID.then((FirebaseUser user) {
+                          if(user != null && widget.image != null){
+                            String uid = user.uid;
+                            String path = "${uid}/${DateTime.now().toString()}.jpg";
 
+                            userBloc.uploadFile(path, widget.image).
+                            then((StorageUploadTask storageUploadTask){
+                              storageUploadTask.onComplete.then((StorageTaskSnapshot snapshot){
+                                snapshot.ref.getDownloadURL().then((urlImage){
+                                  print("URL IMAGE: ${urlImage}");
+                                  //Paso 1
+                                  userBloc.updateUserPlace(Place(
+                                    name: _controllerTitlePlace.text,
+                                    urlImage: urlImage,
+                                    description: _controllerDescriptionPlace.text,
+                                    likes: 0,
+                                  ))
+                                      .whenComplete(() {
+                                    print("Carga de datos Place completada");
+                                    Navigator.pop(context);
+
+                                  });
+
+                                });
+                              });
+                            });
+                          }
                         });
+
                       }else{
                         setState(() {
                           autovalidate = true;
                         });
                       }
-
-                      // Paso 2. Subir imagen al Firebase Storage
-                      // Devuelve url
-                      //ID del usuario loageado actualmente
-
-                      userBloc.currentUserID.then((FirebaseUser user) {
-                        if(user != null){
-
-                        }
-                      });
 
                     },
                   ),

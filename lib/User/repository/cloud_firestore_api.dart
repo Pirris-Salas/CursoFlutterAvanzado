@@ -37,6 +37,7 @@ class CloudFirestoreAPI {
 
     await refPlaces.add({
       'name': place.name,
+      'urlImage': place.urlImage,
       'description': place.description,
       'likes': place.likes,
       'userOwner': "$USERS/$uid" //uid reference - vinculamos usuario
