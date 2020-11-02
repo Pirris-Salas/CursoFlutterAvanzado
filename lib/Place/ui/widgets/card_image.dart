@@ -36,7 +36,7 @@ class CardImageWithFabIcon extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             //image: AssetImage(pathImage),
-            image: pathImage.contains('assets') ? AssetImage(pathImage) : new FileImage(new File(pathImage)),
+            image: pictureValidation(pathImage),
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           shape: BoxShape.rectangle,
@@ -61,4 +61,15 @@ class CardImageWithFabIcon extends StatelessWidget {
       ],
     );
   }
+  
+  ImageProvider pictureValidation(String pathImage){
+      if(pathImage.contains('http')){
+        return NetworkImage(pathImage);
+      }
+      else if (pathImage.contains("assets")){
+        return AssetImage(pathImage);
+      } else{
+        return new FileImage(new File(pathImage));
+      }
+    }
 }
