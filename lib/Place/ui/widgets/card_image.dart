@@ -11,7 +11,7 @@ class CardImageWithFabIcon extends StatelessWidget {
   final VoidCallback onPressed;
   final String pathImage;
   final IconData iconWithBorder;
-  final IconData iconFilled;
+  //
 
   CardImageWithFabIcon({
     Key key,
@@ -19,7 +19,7 @@ class CardImageWithFabIcon extends StatelessWidget {
     @required this.height,
     @required this.width,
     @required this.left,
-    @required this.iconFilled,
+    //@required this.iconFilled,
     @required this.iconWithBorder,
     @required this.onPressed,
   });
@@ -55,7 +55,7 @@ class CardImageWithFabIcon extends StatelessWidget {
         card,
         FloatingActionButtonGreen(
           iconWithBorder: iconWithBorder,
-          iconFilled: iconFilled,
+          //iconFilled: iconFilled,
           onPressed: onPressed,
         ),
       ],

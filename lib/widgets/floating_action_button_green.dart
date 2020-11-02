@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class FloatingActionButtonGreen extends StatefulWidget {
 
   final IconData iconWithBorder;
-  final IconData iconFilled;
+ // final IconData iconFilled;
   final VoidCallback onPressed;
 
   FloatingActionButtonGreen({
     Key key,
     @required this.iconWithBorder,
-    @required this.iconFilled,
+    //@required this.iconFilled,
     @required this.onPressed,
 });
 
@@ -52,7 +52,7 @@ class _FloatingActionButtonGreen extends State <FloatingActionButtonGreen>
         widget.onPressed();
       },
       child: Icon(
-        icon ? widget.iconFilled: widget.iconWithBorder,
+        widget.iconWithBorder,
         color: Colors.white,
       ),
       heroTag: null,

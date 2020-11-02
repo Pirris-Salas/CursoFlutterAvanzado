@@ -24,7 +24,10 @@ class _PlatziTrips extends State<PlatziTrips> {
 
   final List<Widget> widgetsChildren = [
 
-    HomeTrips(),
+    BlocProvider<BlocUser>(
+      child: HomeTrips(),
+      bloc: BlocUser(),
+    ),
 
     SearchTrips(),
 

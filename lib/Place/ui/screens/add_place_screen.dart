@@ -104,7 +104,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                         height: 315.0,
                         width: 390.0,
                         left: 5.0,
-                        iconFilled: Icons.camera_alt,
+                        //iconFilled: Icons.camera_alt,
                         iconWithBorder: Icons.camera_alt_outlined,
                         onPressed: (){
                           ImagePicker.pickImage(source: ImageSource.camera)

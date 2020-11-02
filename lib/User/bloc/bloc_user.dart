@@ -64,7 +64,7 @@ class BlocUser implements Bloc {
   Stream<QuerySnapshot> placesListStream = Firestore.instance.collection(CloudFirestoreAPI().PLACES).snapshots();
   Stream<QuerySnapshot> get placesStream => placesListStream;
 
- List<CardImageWithFabIcon> buildPlaces (List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
+ List<Place> buildPlaces (List<DocumentSnapshot> placesListSnapshot, User user) => _cloudFirestoreRepository.buildPlaces(placesListSnapshot, user);
 
 
   //Trayendo los objetos tipo Place de Firebase según el uid del usuario
@@ -74,6 +74,10 @@ class BlocUser implements Bloc {
 
   List<ProfilePlace> buildMyPlaces(List<DocumentSnapshot> placesListSnapshot) =>
       _cloudFirestoreRepository.buildMyPlaces(placesListSnapshot);
+
+
+  //Caso # Manejando la lógica de likes
+  Future likePlace(Place place, String uid) => _cloudFirestoreRepository.likePlace(place, uid);
 
   //Caso para cerrar sesión
   signOut() {
