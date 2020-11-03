@@ -4,6 +4,12 @@
 
 - BLoC Pattern.
 - Clean Architecture.
+- Flutter Forms.
+- Future.
+- ImagePicker.
+- Cached Network Image.
+- Google Sign In.
+- Bloc Provider.
 - Firebase Auth.
 - Firebase Storage.
 - Flutter Streams.
