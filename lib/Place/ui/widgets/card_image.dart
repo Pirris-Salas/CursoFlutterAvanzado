@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/floating_action_button_green.dart';
@@ -11,6 +12,7 @@ class CardImageWithFabIcon extends StatelessWidget {
   final VoidCallback onPressed;
   final String pathImage;
   final IconData iconWithBorder;
+
   //
 
   CardImageWithFabIcon({
@@ -22,6 +24,7 @@ class CardImageWithFabIcon extends StatelessWidget {
     //@required this.iconFilled,
     @required this.iconWithBorder,
     @required this.onPressed,
+
   });
 
   @override
@@ -64,7 +67,7 @@ class CardImageWithFabIcon extends StatelessWidget {
   
   ImageProvider pictureValidation(String pathImage){
       if(pathImage.contains('http')){
-        return NetworkImage(pathImage);
+        return CachedNetworkImageProvider(pathImage);
       }
       else if (pathImage.contains("assets")){
         return AssetImage(pathImage);
