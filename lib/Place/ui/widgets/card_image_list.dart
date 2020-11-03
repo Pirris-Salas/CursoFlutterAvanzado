@@ -48,7 +48,7 @@ class _CardImageList extends State<CardImageList>{
                 return buildPlacesCard(userBloc.buildPlaces(snapshot.data.docuements, widget.user));
               default:
                 print("PLACESLIST: DEFAULT");
-                return buildPlacesCard(userBloc.buildPlaces(snapshot.data.documents, widget.user));
+                //return buildPlacesCard(userBloc.buildPlaces(snapshot.data.documents, widget.user));
             }
           }
       ),
@@ -61,6 +61,8 @@ class _CardImageList extends State<CardImageList>{
       setState(() {
         place.liked = !place.liked;
         userBloc.likePlace(place, widget.user.uid);
+        place.likes = place.liked ? place.likes +1 : place.likes -1;
+        userBloc.placeSelectedSink.add(place);
       });
     }
 
@@ -71,7 +73,12 @@ class _CardImageList extends State<CardImageList>{
       padding: EdgeInsets.all(25.0),
       scrollDirection: Axis.horizontal,
       children: places.map((place){
-        return CardImageWithFabIcon(
+        return GestureDetector(
+          onTap: (){
+            print("CLICK PLACE: ${place.name}");
+            userBloc.placeSelectedSink.add(place);
+          },
+          child: CardImageWithFabIcon(
             pathImage: place.urlImage,
             height: 250.0,
             width: 350.0,
@@ -81,11 +88,11 @@ class _CardImageList extends State<CardImageList>{
             onPressed: (){
               setLiked(place);
             },
+          ),
         );
       }).toList(),
     );
   }
-
 
 }
 

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -79,6 +80,13 @@ class BlocUser implements Bloc {
   //Caso # Manejando la lógica de likes
   Future likePlace(Place place, String uid) => _cloudFirestoreRepository.likePlace(place, uid);
 
+
+  //Trayendo la data de un place en home cuando este es seleccionado
+  StreamController<Place> placeSelectedStreamController = StreamController<Place>.broadcast();
+  Stream<Place> get placeSelectedStream => placeSelectedStreamController.stream;
+  StreamSink<Place> get placeSelectedSink => placeSelectedStreamController.sink;
+
+
   //Caso para cerrar sesión
   signOut() {
     _auth_repository.signOut();
@@ -86,7 +94,7 @@ class BlocUser implements Bloc {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    placeSelectedStreamController.close();
   }
 
 
